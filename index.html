@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css' rel="stylesheet" type="text/css"/>
+    <link href='css/dc.css' rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='css/style.css' rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.js"></script>
+    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.7/proj4.js"></script>
+    <script type="text/javascript" src="js/dc.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/utils.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/pyramid-chart.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <legend>
+          Long and short term benefit dependency.
+            <a class="pull-right reset btn btn-primary" href="javascript:dc.filterAll();year_chart.filter(2015.3);dc.redrawAll();">Reset All</a>
+          </legend>
+          <p>Data sourced from the <a href="https://www.msd.govt.nz/about-msd-and-our-work/publications-resources/statistics/benefit/index.html#Datatables6">Ministry of Social Development</a>, <a href="https://www.msd.govt.nz/documents/about-msd-and-our-work/publications-resources/statistics/benefit/2015/all-main-benefits-september-2015.csv">All main benefits September 2015.</a> </p>
+        </div>
+      </div>
+      <div class="row">
+        
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+          <div class="row">
+            <div id="year" class="col-sm-12">
+            </div>
+          </div>  
+          <div class="row">
+        
+            <div class="col-sm-4" id="tree">
+             <legend><a href='javascript:age_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
+            </div> 
+
+            <div class="col-sm-4" id="benefit">
+              <legend><a href='javascript:benefit_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
+            </div>
+
+            <div class="col-sm-4" id="duration">
+              <legend><a href='javascript:duration_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
+            </div>    
+
+          </div>
+        </div>
+      <div class="col-sm-1"></div>  
+    </div> 
+    <script type="text/javascript" src="js/charts.js" charset="utf-8"></script>
+  </body>
+</html>
+
+
