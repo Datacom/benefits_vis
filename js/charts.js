@@ -148,7 +148,7 @@ function showCharts(err, data, title_text) {
     .twoLabels(false)// defaults to true. if false, .label defaults to .rowAccessor
     .columnLabels(['Male','Female'])
     .columnLabelPosition([0,125]) //[in,down], in pix. defaults to [5,10]
-   
+    .transitionDuration(200)
   
     age_chart.xAxis().ticks(7).tickFormat(function(x) {return d3.format('s')(Math.abs(x))})
     
@@ -163,8 +163,25 @@ function showCharts(err, data, title_text) {
     .height(small_chart_height)
     .colors(default_colors)
     .elasticX('true')
+    .ordering(function(d){return -d.value})
+    
   
-  benefit_chart.xAxis().ticks(5).tickFormat(integer_format)
+  benefit_chart.xAxis().ticks(4).tickFormat(integer_format)
+  
+  ethnicity = ndx.dimension(function(d){return d.Ethnicity});
+  ethnicity_group = ethnicity.group().reduceSum(function(d){return d.Count});
+ 
+  ethnicity_chart = dc.rowChart('#ethnicity')
+    .dimension(ethnicity)
+    .group(ethnicity_group)
+    .valueAccessor(valueAccessor)
+    .transitionDuration(200)
+    .height(small_chart_height)
+    .colors(default_colors)
+    .elasticX('true')
+    .ordering(function(d){return -d.value})
+  
+  ethnicity_chart.xAxis().ticks(4).tickFormat(integer_format)
       
    duration = ndx.dimension(function(d){return d.Continuous_duration});
   duration_group = duration.group().reduceSum(function(d){return d.Count});
@@ -175,7 +192,7 @@ function showCharts(err, data, title_text) {
     .valueAccessor(valueAccessor)
     .transitionDuration(200)
     .height(small_chart_height)
-    .innerRadius(donut_inner)
+   //.innerRadius(donut_inner)
     .radius(donut_outer)
     .colors(default_colors)
 
