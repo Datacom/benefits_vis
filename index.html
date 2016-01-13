@@ -16,46 +16,47 @@
   </head>
   <body>
     <div class="container">
-
       <div class="row">
         <div class="col-sm-12">
           <legend>
           Long and short term benefit dependency.
-            <a class="pull-right reset btn btn-primary" href="javascript:dc.filterAll();year_chart.filter(2015.3);dc.redrawAll();">Reset All</a>
+            <a class="pull-right" href="javascript:dc.filterAll();year_chart.filter('2015q3');dc.redrawAll();">Reset All</a>
           </legend>
-          <p>Data sourced from the <a href="https://www.msd.govt.nz/about-msd-and-our-work/publications-resources/statistics/benefit/index.html#Datatables6">Ministry of Social Development</a>, <a href="https://www.msd.govt.nz/documents/about-msd-and-our-work/publications-resources/statistics/benefit/2015/all-main-benefits-september-2015.csv">All main benefits September 2015.</a> </p>
+          <p>Data sourced from the <a href="https://www.msd.govt.nz/about-msd-and-our-work/publications-resources/statistics/benefit/index.html#Datatables6">Ministry of Social Development</a>, <a href="https://www.msd.govt.nz/documents/about-msd-and-our-work/publications-resources/statistics/benefit/2015/all-main-benefits-september-2015.csv">All main benefits September 2015.</a>      
+          </p>
         </div>
       </div>
       <div class="row">
-        
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-          <div class="row">
-            <div id="year" class="col-sm-12">
-            </div>
-          </div>  
-          <div class="row">
-        
-            <div class="col-sm-3" id="tree">
+        <div id="year" class="col-sm-12 filter"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 filter" id="duration">
+          <legend><a href='javascript:duration_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
+        </div>  
+        <div id="year_duration" class="col-sm-9"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 filter" id="benefit">
+          <legend><a href='javascript:benefit_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
+        </div>  
+        <div id="year_benefit" class="col-sm-9"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 filter" id="tree">
              <legend><a href='javascript:age_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
-            </div> 
-
-            <div class="col-sm-3" id="benefit">
-              <legend><a href='javascript:benefit_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
-            </div>
-
-            <div class="col-sm-3" id="duration">
-              <legend><a href='javascript:duration_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
-            </div>    
-
-            <div class="col-sm-3" id="ethnicity">
-              <legend><a href='javascript:ethnicity_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
             </div>  
-            
-          </div>
-        </div>
-      <div class="col-sm-1"></div>  
-    </div> 
+        <div id="year_agegroup" class="col-sm-9"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 filter" id="ethnicity">
+              <legend><a href='javascript:ethnicity_chart.filterAll(); dc.redrawAll()' class='pull-right reset' style='display:none;'><i class="fa fa-refresh"> </i> </a></legend>
+        </div>    
+        <div id="year_ethnicity" class="col-sm-9"></div>
+      </div>
+    </div>
+    
+
+
     <script type="text/javascript" src="js/charts.js" charset="utf-8"></script>
   </body>
 </html>

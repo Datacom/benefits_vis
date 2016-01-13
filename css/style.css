@@ -135,34 +135,8 @@
   padding-top: 10px;
 }
 
-#tabs{
-  border-bottom: 1px solid #e5e5e5;
-  
-}
-
-.tab{
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 9;
-  padding-bottom: 8;
-  text-align: center;
-  border: 1px solid #e5e5e5;
-  margin-right: 2;
-  cursor:pointer;
-}
-
-
-
-.tab.selected {
-  background:#e5e5e5;
-}
-
-.tab.hasFilter{
-  background:#fcdcdc;
-  
-}
-.tab.selected.hasFilter{
-  background:#ddc4c4;
+div.filter{
+  background:#fcfdf5;
 }
 
 .grey {

@@ -12,7 +12,6 @@ projection = d3.geo.mercator()
 // Government accessability standards also require adequate leb=vels of contrast between text and background, which when the background is white/grey OR a coloured bar necessitates the use of relatively pale or unsaturated colors.    
 
 //var our_colors =
-//
 //["#EAC337",
 //"#DC63BD",
 //"#E85057",
@@ -23,10 +22,27 @@ projection = d3.geo.mercator()
 //"#AE9936",
 //"#D3715C"]
 
-//var our_colors = ["#DCEFEC","#152E62","#117211","#840A0A","#14666B"]
-var our_colors = ["#9df5e7","#b2bfdb","#a1eda1","#fc9898","#afedf0"]
+var our_blues =
+["#93abf2",
+"#A1CBF1",
+"#7D8FC4",
+"#B9B3CD",
+"#72A1BD",
+"#519FDE",
+"#8E8EAC",
+"#ACB5E7"]
 
-var default_colors = d3.scale.ordinal().range(our_colors) 
+var our_reds =
+["#f78787",
+"#faaf89",
+"#f8a1a8",
+"#fdaee0"]
+
+//var our_colors = ["#DCEFEC","#152E62","#117211","#840A0A","#14666B"]
+//var our_colors = ["#9df5e7","#b2bfdb","#a1eda1","#fc9898","#afedf0"]
+
+var default_blues = d3.scale.ordinal().range(our_blues)
+var default_reds  = d3.scale.ordinal().range(our_reds)
 
 // Choropleths and other maps require a colourscale. Because of the way choropleth .colorAccessor and .colourCalculator work with missing data, we need to also specify a colour for zero/missing, and a colourscale. map_zero_colour sholud be a little lighter (or whatever means "smaller" onyout chart) than the bottom value in the colourscale.
 
