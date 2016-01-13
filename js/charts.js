@@ -152,7 +152,7 @@ reduce_age = configureableReduce('Age_Group', 'Count')
 sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num){ return memo + num; }, 0)}
 
 //---------------------------ORDINARY CHARTS --------------------------------------
-  year = ndx.dimension(function(d){return d.year +"q" +quarters[d.qtr]});
+  year = ndx.dimension(function(d){return d.year +"." +quarters[d.qtr]});
   year_group_benefit = year.group().reduce(reduceBenefit2.add,reduceBenefit2.remove,reduceBenefit2.init);
   year_group_ethnicity = year.group().reduce(reduce_ethnicity.add, reduce_ethnicity.remove,reduce_ethnicity.init);
   year_group_duration = year.group().reduce(reduce_duration.add, reduce_duration.remove,reduce_duration.init)
@@ -175,7 +175,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
     .brushOn(false); 
   
   year_chart.on('postRender.year', function(chart){
-      chart.filter("2015q3")
+      chart.filter("2015.3")
       dc.redrawAll();
       chart.selectAll('rect.bar').on('click.singleFiler', function(d,i){
         year_chart.filterAll();
