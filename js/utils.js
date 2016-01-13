@@ -23,25 +23,27 @@ projection = d3.geo.mercator()
 //"#D3715C"]
 
 var our_blues =
-["#93abf2",
-"#A1CBF1",
-"#7D8FC4",
-"#B9B3CD",
-"#72A1BD",
-"#519FDE",
-"#8E8EAC",
-"#ACB5E7"]
+["#C3C739",
+"#BA88E4",
+"#32BEB3",
+"#E7893B",
+"#EB6F9C",
+"#6ED459"]
 
 var our_reds =
-["#f78787",
-"#faaf89",
-"#f8a1a8",
-"#fdaee0"]
+["#77A4DF",
+"#9ECFB4",
+"#EF734D",
+"#4DD098",
+"#E678B2",
+"#D376EA",
+"#D6A231",
+"#6ED24E"]
 
 //var our_colors = ["#DCEFEC","#152E62","#117211","#840A0A","#14666B"]
 //var our_colors = ["#9df5e7","#b2bfdb","#a1eda1","#fc9898","#afedf0"]
 
-var default_blues = d3.scale.ordinal().range(our_blues)
+var default_blues = d3.scale.ordinal().range(our_reds)
 var default_reds  = d3.scale.ordinal().range(our_reds)
 
 // Choropleths and other maps require a colourscale. Because of the way choropleth .colorAccessor and .colourCalculator work with missing data, we need to also specify a colour for zero/missing, and a colourscale. map_zero_colour sholud be a little lighter (or whatever means "smaller" onyout chart) than the bottom value in the colourscale.
