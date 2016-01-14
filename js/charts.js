@@ -86,24 +86,6 @@ function showCharts(err, data, title_text) {
 
 //--------------------------Reduce functions, valueaccessors---------------------------------------  
   
-//reduceBenefit = {
-//  add:function(v,d){ 
-//    v[d.Benefit_Group] += d.Count 
-//    return v
-//  },
-//  remove: function(v,d){
-//    v[d.Benefit_Group] -= d.Count 
-//    return v
-//  },
-//  init: function(){return {
-//    "Jobseeker Support" :0, 
-//    "Other Main Benefit":0, 
-//    "Sole Parent Support" :0, 
-//    "Supported Living" :0, 
-//    "Youth Payment and Young Parent Payment" :0 
-//    } 
-//  }
-//}  
 
 function configureableReduce(field, value, init) {
   return {
@@ -206,7 +188,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
     .elasticY(true)
     .renderArea(true)
     .brushOn(false)
-    .legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(20).horizontal(true))
+//    .legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(20).horizontal(true))
   
    year_benefit_chart.yAxis().ticks(4).tickFormat(integer_format)
 
@@ -228,7 +210,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
     .elasticY(true)
     .renderArea(true)
     .brushOn(false)
-    .legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(25).horizontal(true))
+    //.legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(25).horizontal(true))
   
    year_ethnicity_chart.yAxis().ticks(4).tickFormat(integer_format)
   
@@ -246,7 +228,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
     .elasticY(true)
     .renderArea(true)
     .brushOn(false)
-    .legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(25).horizontal(true))
+    //.legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(25).horizontal(true))
   
    year_duration_chart.yAxis().ticks(4).tickFormat(integer_format)
    
@@ -266,7 +248,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
     .elasticY(true)
     .renderArea(true)
     .brushOn(false)
-    .legend(dc.legend().x(60).y(small_chart_height-20).autoItemWidth(true).gap(25).horizontal(true))
+    .legend(dc.legend().x(430).y(small_chart_height-15).autoItemWidth(true).gap(25).horizontal(true))
   
    year_age_chart.yAxis().ticks(4).tickFormat(integer_format)
   
@@ -338,7 +320,37 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
     .radius(donut_outer)
     .colors(default_reds)
 
+  highlight_other_chart = function(target_id){
+    return function(d){
+      name = d.key || d.data.key
+      //console.log(name)
+      d3.select(target_id).selectAll("path.area").classed("highlight", function(d){return d.name == name}) }
+
+  }
   
   dc.renderAll()
+  
+  d3.select('#duration').selectAll("path")
+    .on("mouseover",highlight_other_chart("#year_duration"))
+    .on("mouseout", function(){d3.select("#year_duration").selectAll("path.area").classed("highlight",false)})
+  
+  d3.select('#duration').selectAll("text")
+    .on("mouseover",highlight_other_chart("#year_duration"))
+    .on("mouseout", function(){d3.select("#year_duration").selectAll("path.area").classed("highlight",false)})
+  
+  d3.select('#benefit').selectAll(".row")
+    .on("mouseover",highlight_other_chart("#year_benefit"))
+    .on("mouseout", function(){d3.select("#year_benefit").selectAll("path.area").classed("highlight",false)})
+  
+  d3.select('#ethnicity').selectAll(".row")
+    .on("mouseover",highlight_other_chart("#year_ethnicity"))
+    .on("mouseout", function(){d3.select("#year_ethnicity").selectAll("path.area").classed("highlight",false)})
+  
+  d3.select('#tree').selectAll(".row")
+    .on("mouseover",function(d){
+      name = d.key.split(', ')[1]
+      d3.select("#year_agegroup").selectAll("path.area").classed("highlight", function(d){return !d.name.search(name)}) })
+    .on("mouseout", function(){d3.select("#year_agegroup").selectAll("path.area").classed("highlight",false)})
+  
 
 }
