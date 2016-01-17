@@ -323,9 +323,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
   highlight_other_chart = function(target_id){
     return function(d){
       name = d.key || d.data.key
-      //console.log(name)
-      d3.select(target_id).selectAll("path.area").classed("highlight", function(d){return d.name == name}) }
-
+      d3.select(target_id).selectAll("path.area").classed("highlight", function(d){return d.name == name})}
   }
   
   dc.renderAll()
@@ -349,7 +347,7 @@ sumAccessor = function(d){return _.reduce(_.values(d.value), function(memo, num)
   d3.select('#tree').selectAll(".row")
     .on("mouseover",function(d){
       name = d.key.split(', ')[1]
-      d3.select("#year_agegroup").selectAll("path.area").classed("highlight", function(d){return !d.name.search(name)}) })
+      d3.select("#year_agegroup").selectAll("path.area").classed("highlight", function(d){return !d.name.search(name)})})
     .on("mouseout", function(){d3.select("#year_agegroup").selectAll("path.area").classed("highlight",false)})
   
 
